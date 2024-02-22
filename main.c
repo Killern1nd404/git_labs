@@ -6,7 +6,7 @@
 #include "DM/lab1_1/lab1_1.h"
 
 int main() {
-    vector v = createVector(2);
+    test();
 
     return 0;
 }
