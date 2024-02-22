@@ -120,6 +120,7 @@ void test_popBack_notEmptyVector() {
     assert(v.capacity == 1);
 }
 
+
 void test() {
     test_pushBack_emptyVector();
     test_pushBack_fullVector();
