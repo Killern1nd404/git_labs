@@ -7,7 +7,8 @@
 #include "DM/lab1_1/lab1_1.h"
 
 int main() {
-    test2();
+    //test1();
+    //test2();
 
     return 0;
 }
