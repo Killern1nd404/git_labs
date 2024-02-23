@@ -6,7 +6,7 @@
 
 vector createVector(size_t n) {
     vector result;
-    result.data = malloc(sizeof(int) * n);
+    result.data = malloc(sizeof(int)*n);
 
     if (!result.data) {
         fprintf(stderr, "bad alloc");
@@ -30,10 +30,7 @@ void reserve(vector *v, size_t newCapacity) {
     }
 
     v->capacity = newCapacity;
-
-    if (newCapacity < v->size) {
-        v->size = newCapacity;
-    }
+    v->size = newCapacity < v->size ? newCapacity : v->size;
 
     printf("Memory has been successfully reallocated\n");
 }
@@ -66,11 +63,13 @@ int getVectorValue(vector *v, size_t i) {
 
 void pushBack(vector *v, int x) {
     if (v->size == v->capacity) {
+        size_t newCapacity = v->capacity*2;
+
         if (v->capacity == 0) {
-            reserve(v, 1);
-        } else {
-            reserve(v, v->capacity*2);
+            newCapacity = 1;
         }
+
+        reserve(v, newCapacity);
     }
 
     v->data[v->size++] = x;
