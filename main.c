@@ -7,12 +7,7 @@
 #include "DM/lab1_1/lab1_1.h"
 
 int main() {
-    vector v = createVector(2);
-    pushBack(&v, 1);
-    pushBack(&v, 2);
-    int* result = atVector(&v, 1);
-
-    vectorVoid v_void = {result, v.size, v.capacity, sizeof(int)};
+    test2();
 
     return 0;
 }
