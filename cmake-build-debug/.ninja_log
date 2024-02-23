@@ -21,3 +21,7 @@
 7	218	7303917512417298	CMakeFiles/project.dir/main.c.obj	e02c889176325ab9
 156	378	7303917514061365	libs/data_structures/libdata_structures.a	56f734172a560807
 378	626	7303917516482574	project.exe	83296ff8f90b4aa2
+7	177	7303924118492388	CMakeFiles/project.dir/main.c.obj	e02c889176325ab9
+23	201	7303924118746327	libs/data_structures/CMakeFiles/data_structures.dir/vector/vectorVoid.c.obj	8ac85725b18f56ee
+202	378	7303924120540314	libs/data_structures/libdata_structures.a	56f734172a560807
+379	625	7303924122915198	project.exe	83296ff8f90b4aa2
