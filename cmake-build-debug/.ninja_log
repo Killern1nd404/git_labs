@@ -18,3 +18,8 @@
 26	341	7297243078293866	CMakeFiles/project.dir/DM/lab1_1/lab1_1.c.obj	40c92d071d9c1a9
 10	269	7303908033314323	libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj	d9ff2348e392eddc
 7	253	7303949875503440	libs/data_structures/CMakeFiles/data_structures.dir/vector/vectorVoid.c.obj	8ac85725b18f56ee
+9	309	7309093124925639	CMakeFiles/project.dir/main.c.obj	e02c889176325ab9
+26	315	7309093124995093	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	9b823f01042a33b1
+50	329	7309093125133685	libs/data_structures/CMakeFiles/data_structures.dir/vector/vectorVoid.c.obj	8ac85725b18f56ee
+330	546	7309093127317657	libs/data_structures/libdata_structures.a	9cc480d5c7b073f
+546	918	7309093130983815	project.exe	83296ff8f90b4aa2
