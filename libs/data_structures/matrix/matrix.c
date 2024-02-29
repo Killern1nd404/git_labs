@@ -1,6 +1,8 @@
 #include "matrix.h"
 #include <malloc.h>
 #include <stdio.h>
+#include <assert.h>
+#include <memory.h>
 
 matrix getMemMatrix(int nRows, int nCols) {
     int **values = (int **)malloc(sizeof(int*) * nRows);
@@ -57,5 +59,24 @@ void outputMatrix(matrix m) {
 void outputMatrices(matrix *ms, int nMatrices) {
     for (int i = 0; i < nMatrices; i++) {
         outputMatrix(ms[i]);
+    }
+}
+
+void swapRows(matrix *m, int i1, int i2) {
+    assert(i1 < m->nRows && i2 < m->nRows);
+
+    int *temp = m->values[i1];
+
+    memcpy(&m->values[i1], &m->values[i2], sizeof(int *));
+    memcpy(&m->values[i2], &temp, sizeof(int *));
+}
+
+void swapColumns(matrix *m, int j1, int j2) {
+    assert(j1 < m->nCols && j2 < m->nCols);
+    for (int i = 0; i < m->nRows; i++) {
+        int temp = m->values[i][j1];
+
+        memcpy(&m->values[i][j1], &m->values[i][j2], sizeof(int));
+        memcpy(&m->values[i][j2], &temp, sizeof(int));
     }
 }
