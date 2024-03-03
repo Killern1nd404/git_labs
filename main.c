@@ -8,9 +8,9 @@
 #include "libs/data_structures//matrix/matrix.h"
 
 int main() {
-    matrix m = getMemMatrix(2, 2);
+    matrix m = getMemMatrix(3, 2);
     inputMatrix(&m);
-    selectionSortColsMatrixByColCriteria(m, getSum);
+    transposeMatrix(&m);
     outputMatrix(m);
 
     return 0;
