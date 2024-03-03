@@ -10,6 +10,7 @@
 int main() {
     matrix m = getMemMatrix(2, 2);
     inputMatrix(&m);
+    selectionSortColsMatrixByColCriteria(m, getSum);
     outputMatrix(m);
 
     return 0;
