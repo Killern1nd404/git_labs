@@ -2,6 +2,7 @@
 #define UNTITLED_MATRIX_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 typedef struct matrix {
     int **values;
@@ -55,5 +56,35 @@ void transposeMatrix(matrix *m);
 position getMinValuePos(matrix m);
 
 position getMaxValuePos(matrix m);
+
+matrix createMatrixFromArray(const int *a, int nRows, int nCols);
+
+matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t nRows, size_t nCols);
+
+void test_swap_rows();
+
+void test_swap_columns();
+
+void test_is_square_matrix_true();
+
+void test_is_square_matrix_false();
+
+void test_is_e_matrix_true();
+
+void test_is_e_matrix_false();
+
+void test_is_symmetric_matrix_true();
+
+void test_is_symmetric_matrix_false();
+
+void test_transpose_square_matrix();
+
+void test_transpose_matrix();
+
+void test_get_min_value_pos();
+
+void test_get_max_value_pos();
+
+void test_matrix();
 
 #endif //UNTITLED_MATRIX_H

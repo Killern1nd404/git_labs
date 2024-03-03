@@ -8,10 +8,7 @@
 #include "libs/data_structures//matrix/matrix.h"
 
 int main() {
-    matrix m = getMemMatrix(3, 2);
-    inputMatrix(&m);
-    transposeMatrix(&m);
-    outputMatrix(m);
+    test_matrix();
 
     return 0;
 }
