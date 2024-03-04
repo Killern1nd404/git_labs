@@ -73,3 +73,10 @@
 7	262	7311731389766639	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	9b823f01042a33b1
 262	433	7311731391505957	libs/data_structures/libdata_structures.a	9cc480d5c7b073f
 433	692	7311731394042126	project.exe	83296ff8f90b4aa2
+9	229	7312491034514505	CMakeFiles/project.dir/main.c.obj	e02c889176325ab9
+27	323	7312491035458539	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	9b823f01042a33b1
+324	560	7312491037854274	libs/data_structures/libdata_structures.a	9cc480d5c7b073f
+561	883	7312491041016769	project.exe	83296ff8f90b4aa2
+7	311	7312491286680212	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	9b823f01042a33b1
+311	484	7312491288466219	libs/data_structures/libdata_structures.a	9cc480d5c7b073f
+485	793	7312491291463514	project.exe	83296ff8f90b4aa2
