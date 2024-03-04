@@ -8,10 +8,7 @@
 #include "libs/data_structures//matrix/matrix.h"
 
 int main() {
-    matrix m = createMatrixFromArray((int[]) {2, 4, 3,
-                                              5, 9, 6,
-                                              7, 8, 1},3, 3);
-    freeMemMatrix(&m);
+    test_matrix();
 
     return 0;
 }
