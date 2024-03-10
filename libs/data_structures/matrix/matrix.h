@@ -95,4 +95,14 @@ void test_swap_rows_with_min_and_max_elements_2();
 
 void test_swap_rows_with_min_and_max_elements();
 
+int getMax(int *a, int n);
+
+void sortRowsByMinElement(matrix *m);
+
+void test_sortRowsByMinElement_1();
+
+void test_sortRowsByMinElement_2();
+
+void test_sortRowsByMinElement();
+
 #endif //UNTITLED_MATRIX_H
