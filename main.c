@@ -8,7 +8,7 @@
 #include "libs/data_structures//matrix/matrix.h"
 
 int main() {
-    test_matrix();
+    test_swap_rows_with_min_and_max_elements();
 
     return 0;
 }

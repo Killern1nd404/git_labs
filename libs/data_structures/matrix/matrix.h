@@ -87,4 +87,12 @@ void test_get_max_value_pos();
 
 void test_matrix();
 
+void swap_rows_with_min_and_max_elements(matrix *m);
+
+void test_swap_rows_with_min_and_max_elements_1();
+
+void test_swap_rows_with_min_and_max_elements_2();
+
+void test_swap_rows_with_min_and_max_elements();
+
 #endif //UNTITLED_MATRIX_H
