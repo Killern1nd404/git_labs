@@ -141,4 +141,14 @@ void test_transposeIfMatrixHasNotEqualSumOfRows_4();
 
 void test_transposeIfMatrixHasNotEqualSumOfRows();
 
+bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
+void test_isMutuallyInverseMatrices_1();
+
+void test_isMutuallyInverseMatrices_2();
+
+void test_isMutuallyInverseMatrices_3();
+
+void test_isMutuallyInverseMatrices();
+
 #endif //UNTITLED_MATRIX_H
