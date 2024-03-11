@@ -151,4 +151,16 @@ void test_isMutuallyInverseMatrices_3();
 
 void test_isMutuallyInverseMatrices();
 
+
+
+int countNUnique(int *a, int n);
+
+int countEqClassesByRowsSum(matrix m);
+
+void test_countEqClassesByRowsSum_1();
+
+void test_countEqClassesByRowsSum_2();
+
+void test_countEqClassesByRowsSum();
+
 #endif //UNTITLED_MATRIX_H
