@@ -163,4 +163,12 @@ void test_countEqClassesByRowsSum_2();
 
 void test_countEqClassesByRowsSum();
 
+int getNSpecialElement(matrix m);
+
+void test_getNSpecialElement_1();
+
+void test_getNSpecialElement_2();
+
+void test_getNSpecialElement();
+
 #endif //UNTITLED_MATRIX_H
