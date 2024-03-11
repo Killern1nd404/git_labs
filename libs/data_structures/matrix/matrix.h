@@ -171,4 +171,12 @@ void test_getNSpecialElement_2();
 
 void test_getNSpecialElement();
 
+void swapPenultimateRow(matrix m);
+
+void test_swapPenultimateRow_1();
+
+void test_swapPenultimateRow_2();
+
+void test_swapPenultimateRow();
+
 #endif //UNTITLED_MATRIX_H
