@@ -191,4 +191,12 @@ void test_countNonDescendingRowsMatrices_2();
 
 void test_countNonDescendingRowsMatrices();
 
+int countValues(const int *a, int n, int value);
+
+int countZeroRows(matrix m);
+
+void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
+
+void test_printMatrixWithMaxZeroRows();
+
 #endif //UNTITLED_MATRIX_H
