@@ -235,4 +235,12 @@ void sortByDistances(matrix m);
 
 void test_sortByDistances();
 
+double getScalarProduct(int *a, int *b, int n);
+
+double getCosine(int *a, int *b, int n);
+
+int getVectorIndexWithMaxAngle(matrix m, int *b);
+
+void test_getVectorIndexWithMaxAngle();
+
 #endif //UNTITLED_MATRIX_H
