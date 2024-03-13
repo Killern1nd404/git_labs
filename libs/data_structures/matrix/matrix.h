@@ -199,4 +199,14 @@ void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
 
 void test_printMatrixWithMaxZeroRows();
 
+int get_matrix_norm(matrix m);
+
+void print_matrices_with_min_norm(matrix *ms, int n);
+
+void test_print_matrices_with_min_norm_1();
+
+void test_print_matrices_with_min_norm_2();
+
+void test_print_matrices_with_min_norm();
+
 #endif //UNTITLED_MATRIX_H
