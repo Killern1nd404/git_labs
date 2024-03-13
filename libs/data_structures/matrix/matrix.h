@@ -151,8 +151,6 @@ void test_isMutuallyInverseMatrices_3();
 
 void test_isMutuallyInverseMatrices();
 
-
-
 int countNUnique(int *a, int n);
 
 int countEqClassesByRowsSum(matrix m);
@@ -212,5 +210,21 @@ void test_print_matrices_with_min_norm();
 int getNSpecialElement2(matrix m);
 
 void test_getNSpecialElement2();
+
+/*int max(int a, int b);
+
+long long findSumOfMaxesOfPseudoDiagonal(matrix m);
+
+void test_findSumOfMaxesOfPseudoDiagonal();*/
+
+int getMinInArea(matrix m);
+
+void test_getMinInArea_1();
+
+void test_getMinInArea_2();
+
+void test_getMinInArea_3();
+
+void test_getMinInArea();
 
 #endif //UNTITLED_MATRIX_H
