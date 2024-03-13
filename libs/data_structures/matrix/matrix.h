@@ -243,4 +243,10 @@ int getVectorIndexWithMaxAngle(matrix m, int *b);
 
 void test_getVectorIndexWithMaxAngle();
 
+long long getScalarProductRowAndCol(matrix m, int i, int j);
+
+long long getSpecialScalarProduct(matrix m);
+
+void test_getSpecialScalarProduct();
+
 #endif //UNTITLED_MATRIX_H
