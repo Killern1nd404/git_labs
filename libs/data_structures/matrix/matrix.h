@@ -209,4 +209,8 @@ void test_print_matrices_with_min_norm_2();
 
 void test_print_matrices_with_min_norm();
 
+int getNSpecialElement2(matrix m);
+
+void test_getNSpecialElement2();
+
 #endif //UNTITLED_MATRIX_H
