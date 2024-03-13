@@ -1274,7 +1274,7 @@ void test_getNSpecialElement2() {
     freeMemMatrix(&m);
 }
 
-/*int max(int a, int b) {
+int max(int a, int b) {
     return a > b ? a : b;
 }
 
@@ -1283,19 +1283,19 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
 
     for (int i = 0; i < m.nCols + m.nRows - 1; i++) {
         int row = max(0, m.nRows - i - 1);
-        int col = max(0, i - m.nCols + 1);
-        int max_value = INT_MIN;
+        int col = max(0, i - m.nRows + 1);
 
-        while (row < m.nRows && col < m.nCols) {
-            if (row != col) {
+        if (row != col) {
+            int max_value = INT_MIN;
+
+            while (row < m.nRows && col < m.nCols) {
                 max_value = max(max_value, m.values[row][col]);
+                row++;
+                col++;
             }
 
-            row++;
-            col++;
+            res += max_value;
         }
-
-        res += max_value;
     }
 
     return res;
@@ -1309,7 +1309,7 @@ void test_findSumOfMaxesOfPseudoDiagonal() {
     assert(findSumOfMaxesOfPseudoDiagonal(m) == 20);
 
     freeMemMatrix(&m);
-}*/
+}
 
 int getMinInArea(matrix m) {
     if (m.nRows > 0 && m.nCols > 0) {

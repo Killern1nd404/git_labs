@@ -211,11 +211,11 @@ int getNSpecialElement2(matrix m);
 
 void test_getNSpecialElement2();
 
-/*int max(int a, int b);
+int max(int a, int b);
 
 long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
-void test_findSumOfMaxesOfPseudoDiagonal();*/
+void test_findSumOfMaxesOfPseudoDiagonal();
 
 int getMinInArea(matrix m);
 
