@@ -7,9 +7,10 @@
 #include "OP/lab13/lab13.h"
 #include "DM/lab1_1/lab1_1.h"
 #include "libs/data_structures//matrix/matrix.h"
+#include "libs/data_structures/string/string_.h"
 
 int main() {
-    test_findSumOfMaxesOfPseudoDiagonal();
+    test_string_();
 
     return 0;
 }
