@@ -64,6 +64,17 @@ void test_is_strings_equal_2();
 
 void test_is_strings_equal_3();
 
+char* copy(const char *beginSource, const char *endSource, char *beginDestination);
+
+char* copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int));
+
+char* copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int));
+
+void test_copy();
+
+void test_copyIf();
+
+void test_copyIfReverse();
 
 void test_string_();
 
