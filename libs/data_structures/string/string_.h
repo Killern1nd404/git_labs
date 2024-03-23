@@ -2,6 +2,7 @@
 #define UNTITLED_STRING__H
 
 #include <stdio.h>
+#include <stdbool.h>
 
 size_t strlen_(const char *begin);
 
@@ -55,6 +56,13 @@ void test_find_space_reverse_3();
 
 void test_find_space_reverse_4();
 
+int strcmp_(const char *lhs, const char *rhs);
+
+void test_is_strings_equal_1();
+
+void test_is_strings_equal_2();
+
+void test_is_strings_equal_3();
 
 
 void test_string_();
