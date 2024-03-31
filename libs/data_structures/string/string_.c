@@ -4,6 +4,8 @@
 #include <assert.h>
 #include <memory.h>
 
+#define ASSERT_STRING(expected, got) assertString(expected, got, __FILE__, __FUNCTION__, __LINE__)
+
 size_t strlen_(const char *begin) {
     char *end = begin;
     while (*end != '\0')
@@ -260,6 +262,31 @@ void test_copyIfReverse() {
     assert(strcmp_(new_string, result) == 0);
 }
 
+void removeNonLetters(char *s) {
+    char *endSource = s + strlen_(s);
+    char *destination = copyIf(s, endSource, s, isgraph);
+    *destination = '\0';
+}
+
+void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line) {
+    if (strcmp_(expected, got)) {
+        fprintf(stderr, "File %s\n", fileName);
+        fprintf(stderr, "%s - failed on line %d\n", funcName, line);
+        fprintf(stderr, "Expected: \"%s\"\n", expected);
+        fprintf(stderr, "Got: \"%s\"\n\n", got);
+    } else
+        fprintf(stderr, "%s - OK\n", funcName);
+}
+
+void test_removeNonLetters() {
+    char s1[] = "hel lo";
+    char s2[] = "hello";
+
+    removeNonLetters(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
 void test_string_() {
     test_find_1();
     test_find_2();
@@ -287,4 +314,5 @@ void test_string_() {
     test_copy();
     test_copyIf();
     test_copyIfReverse();
+    test_removeNonLetters();
 }

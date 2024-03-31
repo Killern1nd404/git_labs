@@ -78,4 +78,12 @@ void test_copyIfReverse();
 
 void test_string_();
 
+void removeNonLetters(char *s);
+
+void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line);
+
+void test_removeNonLetters();
+
+
+
 #endif //UNTITLED_STRING__H
