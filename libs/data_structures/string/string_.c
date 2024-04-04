@@ -206,7 +206,7 @@ char* copy(const char *beginSource, const char *endSource, char *beginDestinatio
 
 char* copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     while (beginSource != endSource) {
-        if (f( *beginSource)) {
+        if (f(*beginSource)) {
             *beginDestination = *beginSource;
             beginDestination++;
         }
@@ -287,6 +287,25 @@ void test_removeNonLetters() {
     ASSERT_STRING(s1, s2);
 }
 
+int is_not_part_of_sequence(char *s) {
+    return strcmp_(s, s - 1) == 0;
+}
+
+void removeAdjacentEqualLetters(char *s) {
+    char *endSource = s + strlen_(s);
+    char *destination = copyIf(s, endSource, s, (int (*)(int)) is_not_part_of_sequence);
+    *destination = '\0';
+}
+
+void test_removeAdjacentEqualLetters() {
+    char s1[] = "aadd";
+    char s2[] = "ad";
+
+    removeAdjacentEqualLetters(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
 void test_string_() {
     test_find_1();
     test_find_2();
@@ -315,4 +334,5 @@ void test_string_() {
     test_copyIf();
     test_copyIfReverse();
     test_removeNonLetters();
+    test_removeAdjacentEqualLetters();
 }

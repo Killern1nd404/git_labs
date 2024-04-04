@@ -84,6 +84,10 @@ void assertString(const char *expected, char *got, char const *fileName, char co
 
 void test_removeNonLetters();
 
+int is_not_part_of_sequence(char *s);
 
+void removeAdjacentEqualLetters(char *s);
+
+void test_removeAdjacentEqualLetters();
 
 #endif //UNTITLED_STRING__H
