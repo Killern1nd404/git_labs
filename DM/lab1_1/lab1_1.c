@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <malloc.h>
 
-void set_print(int *set, size_t size) {
+/*void set_print(int *set, size_t size) {
     if (size == 0) {
         printf("{}\n");
     } else {
@@ -630,4 +630,4 @@ void calculate_task_2() {
     unordered_set_unification(_2, _2_size, _3, _3_size, _4, &_4_size);
 
     set_print(_4, _4_size);
-}
+}*/

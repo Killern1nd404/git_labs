@@ -84,10 +84,14 @@ void assertString(const char *expected, char *got, char const *fileName, char co
 
 void test_removeNonLetters();
 
-int is_not_part_of_sequence(char *s);
+char* copy_if_not_extra_spaces(char *beginSource, const char *endSource, char *beginDestination);
 
-void removeAdjacentEqualLetters(char *s);
+void removeExtraSpaces(char *s);
 
-void test_removeAdjacentEqualLetters();
+void test_removeExtraSpaces_1();
+
+void test_removeExtraSpaces_2();
+
+void test_removeExtraSpaces_3();
 
 #endif //UNTITLED_STRING__H

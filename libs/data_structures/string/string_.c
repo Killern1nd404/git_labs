@@ -287,21 +287,55 @@ void test_removeNonLetters() {
     ASSERT_STRING(s1, s2);
 }
 
-int is_not_part_of_sequence(char *s) {
-    return strcmp_(s, s - 1) == 0;
+char* copy_if_not_extra_spaces(char *beginSource, const char *endSource, char *beginDestination) {
+    *beginDestination = *beginSource;
+    beginDestination++;
+    beginSource++;
+
+    while (beginSource != endSource) {
+        if (!isspace(*beginSource) || (isspace(*beginSource) && !isspace(*(beginSource - 1)))) {
+            *beginDestination = *beginSource;
+            beginDestination++;
+        }
+        beginSource++;
+    }
+
+    *beginDestination = '\0';
+
+    return beginDestination;
 }
 
-void removeAdjacentEqualLetters(char *s) {
-    char *endSource = s + strlen_(s);
-    char *destination = copyIf(s, endSource, s, (int (*)(int)) is_not_part_of_sequence);
-    *destination = '\0';
+void removeExtraSpaces(char *s) {
+    if (strlen_(s) > 0) {
+        char *endSource = s + strlen_(s);
+        char *destination = copy_if_not_extra_spaces(s, endSource, s);
+        *destination = '\0';
+    }
 }
 
-void test_removeAdjacentEqualLetters() {
-    char s1[] = "aadd";
-    char s2[] = "ad";
+void test_removeExtraSpaces_1() {
+    char s1[] = "";
+    char s2[] = "";
 
-    removeAdjacentEqualLetters(s1);
+    removeExtraSpaces(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeExtraSpaces_2() {
+    char s1[] = " ";
+    char s2[] = " ";
+
+    removeExtraSpaces(s1);
+
+    ASSERT_STRING(s1, s2);
+}
+
+void test_removeExtraSpaces_3() {
+    char s1[] = "  hell    o ";
+    char s2[] = " hell o ";
+
+    removeExtraSpaces(s1);
 
     ASSERT_STRING(s1, s2);
 }
@@ -334,5 +368,7 @@ void test_string_() {
     test_copyIf();
     test_copyIfReverse();
     test_removeNonLetters();
-    test_removeAdjacentEqualLetters();
+    test_removeExtraSpaces_1();
+    test_removeExtraSpaces_2();
+    test_removeExtraSpaces_3();;
 }

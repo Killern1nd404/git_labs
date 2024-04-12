@@ -8,8 +8,9 @@
 #include "DM/lab1_1/lab1_1.h"
 #include "libs/data_structures//matrix/matrix.h"
 #include "libs/data_structures/string/string_.h"
+#include "DM/lab1_3/lab1_3.h"
 
-int main() {
+int main() {;
     test_string_();
 
     return 0;
