@@ -340,6 +340,45 @@ void test_removeExtraSpaces_3() {
     ASSERT_STRING(s1, s2);
 }
 
+int getWord(char *beginSearch, WordDescriptor *word) {
+    word->begin = findNonSpace(beginSearch);
+    if (*word->begin == '\0')
+        return 0;
+    word->end = findSpace(word->begin);
+    return 1;
+}
+
+void digitToStart(WordDescriptor word) {
+    char _stringBuffer[MAX_STRING_SIZE + 1];
+    char *endStringBuffer = copy(word.begin, word.end,_stringBuffer);
+    //char *recPosition = copyIfReverse(endStringBuffer - 1,_stringBuffer - 1,word.begin, isdigit);
+    char *recPosition = copyIf(_stringBuffer, endStringBuffer, word.begin, isdigit);
+    copyIf(_stringBuffer, endStringBuffer, recPosition, isalpha);
+}
+
+void digitToEnd(WordDescriptor word) {
+    char _stringBuffer[MAX_STRING_SIZE + 1];
+    char *endStringBuffer = copy(word.begin, word.end,_stringBuffer);
+    //char *recPosition = copyIfReverse(endStringBuffer - 1,_stringBuffer - 1,word.begin, isdigit);
+    char *recPosition = copyIf(_stringBuffer, endStringBuffer, word.begin, isalpha);
+    copyIf(_stringBuffer, endStringBuffer, recPosition, isdigit);
+}
+
+void digits_to_end(char *string) {
+    WordDescriptor word;
+    char *beginSearch = string;
+    while (getWord(beginSearch, &word)) {
+        digitToEnd(word);
+        beginSearch = word.end;
+    }
+}
+
+void test_WordDescriptor() {
+    char string[] = "he13l3lo8";
+    digits_to_end(string);
+    ASSERT_STRING("hello1338", string);
+}
+
 void test_string_() {
     test_find_1();
     test_find_2();
@@ -370,5 +409,6 @@ void test_string_() {
     test_removeNonLetters();
     test_removeExtraSpaces_1();
     test_removeExtraSpaces_2();
-    test_removeExtraSpaces_3();;
+    test_removeExtraSpaces_3();
+    test_WordDescriptor();
 }
