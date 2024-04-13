@@ -415,6 +415,97 @@ void test_replace_digits_with_spaces() {
     ASSERT_STRING("h   l", string_3);
 }
 
+bool are_two_words_equal(WordDescriptor a, WordDescriptor b) {
+    char *readBuffer1 = a.begin;
+    char *readBuffer2 = b.begin;
+
+    while ((*readBuffer1 != ' ' || *readBuffer2 != ' ') && (*readBuffer1 != '\0' && *readBuffer2 != '\0')) {
+        if (*readBuffer1 != *readBuffer2 != '\0') {
+            return 0;
+        }
+
+        readBuffer1++;
+        readBuffer2++;
+    }
+
+    return readBuffer1 == a.end && readBuffer2 == b.end;
+}
+
+void replace(char *source, char *w1, char *w2) {
+    size_t w1Size = strlen_(w1);
+    size_t w2Size = strlen_(w2);
+    WordDescriptor word1 = {w1, w1 + w1Size};
+    WordDescriptor word2 = {w2, w2 + w2Size};
+    WordDescriptor word;
+    char _stringBuffer[MAX_STRING_SIZE + 1];
+    char *readPtr, *recPtr;
+
+    if (w1Size >= w2Size) {
+        readPtr = source;
+        recPtr = source;
+    } else {
+        copy(source, source + strlen_(source), _stringBuffer);
+        readPtr = _stringBuffer;
+        recPtr = source;
+    }
+
+    while (getWord(readPtr, &word)) {
+        WordDescriptor res = word2;
+
+        if (!are_two_words_equal(word, word1)) {
+            res = word;
+        }
+
+        for (char *cp = res.begin; cp != res.end; cp++) {
+            *recPtr++ = *cp;
+        }
+
+        *recPtr++ = ' ';
+        readPtr = word.end;
+    }
+
+    *(recPtr - 1) = '\0';
+}
+
+void test_replace() {
+    char string[] = "0/15/2 who? -=-";
+    replace(string, "who?", "Yasuo");
+    ASSERT_STRING("0/15/2 Yasuo -=-", string);
+}
+
+/*bool are_words_in_string_ordered(char *string) {
+    WordDescriptor a, b;
+    if (getWord(string, &a)) {
+        b = a;
+        string = a.end;
+        while (getWord(string, &a)) {
+            if (!are_two_words_equal(a, b)) {
+                return 0;
+            }
+            b = a;
+            string = a.end;
+        }
+
+        return 1;
+    } else {
+        return 1;
+    }
+}
+
+void test_are_words_in_string_ordered() {
+    char string[] = "walter white";
+    bool result = are_words_in_string_ordered(string);
+    assert(result == false);
+
+    char string2[] = "w w";
+    bool result2 = are_words_in_string_ordered(string2);
+    assert(result2 == true);
+
+    char string3[] = "";
+    bool result3 = are_words_in_string_ordered(string3);
+    assert(result3 == true);
+}*/
+
 void test_string_() {
     test_find_1();
     test_find_2();
@@ -448,4 +539,6 @@ void test_string_() {
     test_removeExtraSpaces_3();
     test_WordDescriptor();
     test_replace_digits_with_spaces();
+    //test_are_words_in_string_ordered();
+    test_replace();
 }
