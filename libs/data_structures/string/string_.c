@@ -6,6 +6,9 @@
 
 #define ASSERT_STRING(expected, got) assertString(expected, got, __FILE__, __FUNCTION__, __LINE__)
 
+BagOfWords _bag;
+BagOfWords _bag;
+
 size_t strlen_(const char *begin) {
     char *end = begin;
     while (*end != '\0')
@@ -471,39 +474,62 @@ void test_replace() {
     char string[] = "0/15/2 who? -=-";
     replace(string, "who?", "Yasuo");
     ASSERT_STRING("0/15/2 Yasuo -=-", string);
+
+    char string2[] = "0/15/2 x -=- x";
+    replace(string2, "x", "Yasuo");
+    ASSERT_STRING("0/15/2 Yasuo -=- Yasuo", string2);
 }
 
-/*bool are_words_in_string_ordered(char *string) {
-    WordDescriptor a, b;
-    if (getWord(string, &a)) {
-        b = a;
-        string = a.end;
-        while (getWord(string, &a)) {
-            if (!are_two_words_equal(a, b)) {
-                return 0;
-            }
-            b = a;
-            string = a.end;
-        }
-
-        return 1;
-    } else {
-        return 1;
+void getBagOfWords(BagOfWords *bag, char *s) {
+    bag->size = 0;
+    WordDescriptor word;
+    char *beginSearch = s;
+    while (getWord(beginSearch, &word)) {
+        bag->words[bag->size].begin = word.begin;
+        bag->words[bag->size].end = word.end;
+        bag->size++;
+        beginSearch = word.end;
     }
 }
 
-void test_are_words_in_string_ordered() {
-    char string[] = "walter white";
-    bool result = are_words_in_string_ordered(string);
-    assert(result == false);
+void print_words_in_reversed_order(char *string) {
+    getBagOfWords(&_bag, string);
+    char word[MAX_WORD_SIZE];
 
-    char string2[] = "w w";
-    bool result2 = are_words_in_string_ordered(string2);
-    assert(result2 == true);
+    for (size_t i = _bag.size; i > 0; i--) {
+        copy(_bag.words[i - 1].begin, _bag.words[i - 1].end, word);
+        printf("%s\n", word);
+    }
+}
 
-    char string3[] = "";
-    bool result3 = are_words_in_string_ordered(string3);
-    assert(result3 == true);
+void test_print_words_in_reversed_order() {
+    char string_1[] = "";
+    print_words_in_reversed_order(string_1);
+
+    char string_2[] = "One Two Three";
+    print_words_in_reversed_order(string_2);
+
+
+}
+
+/*int getWord2(char *beginSearch, WordDescriptor *word) {
+    word->begin = findNonSpace(beginSearch);
+    if (*word->begin == '\0')
+        return 0;
+    word->end = findSpace(word->begin);
+    return 1;
+}
+
+void test() {
+    char new_string[10];
+    char string[] = "ddsssd sdsd";
+    WordDescriptor word;
+    char *beginSearch = string;
+    while (getWord2(beginSearch, &word)) {
+        copy(word.begin, word.end, new_string);
+        printf("%s\n", new_string);
+        beginSearch = word.end;
+    }
 }*/
 
 void test_string_() {
@@ -541,4 +567,5 @@ void test_string_() {
     test_replace_digits_with_spaces();
     //test_are_words_in_string_ordered();
     test_replace();
+    test_print_words_in_reversed_order();
 }
