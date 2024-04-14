@@ -508,8 +508,49 @@ void test_print_words_in_reversed_order() {
 
     char string_2[] = "One Two Three";
     print_words_in_reversed_order(string_2);
+}
 
+int is_palindrome(char *begin, char *end) {
+    end--;
 
+    while (end > begin) {
+        if (*begin != *end) {
+            return 0;
+        }
+
+        begin++;
+        end--;
+    }
+
+    return 1;
+}
+
+int count_palindromes(char *string) {
+    char *begin = findNonSpace(string);
+    char *end = string + strlen_(string);
+    char *new_word = find(begin, end, ',');
+    bool is_last_word = *new_word == '\n';
+    size_t result = 0;
+
+    while (*new_word != '\0' || is_last_word) {
+        result += is_palindrome(begin, new_word);
+        if (is_last_word) {
+            break;
+        }
+        begin = findNonSpace(new_word + 1);
+        new_word = find(begin, end, ',');
+        is_last_word = *new_word == '\0';
+    }
+
+    return result;
+}
+
+void test_count_palindromes() {
+    char string_1[] = "";
+    assert(count_palindromes(string_1) == 0);
+
+    char string_2[] = "daffs, dadad";
+    assert(count_palindromes(string_2) == 1);
 }
 
 /*int getWord2(char *beginSearch, WordDescriptor *word) {
@@ -533,7 +574,7 @@ void test() {
 }*/
 
 void test_string_() {
-    test_find_1();
+    /*test_find_1();
     test_find_2();
     test_find_3();
     test_find_4();
@@ -567,5 +608,6 @@ void test_string_() {
     test_replace_digits_with_spaces();
     //test_are_words_in_string_ordered();
     test_replace();
-    test_print_words_in_reversed_order();
+    test_print_words_in_reversed_order();*/
+    test_count_palindromes();
 }
