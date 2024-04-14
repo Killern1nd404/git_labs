@@ -140,4 +140,8 @@ int count_palindromes(char *string);
 
 void test_count_palindromes();
 
+void join_strings(char *string1, char *string2, char *result);
+
+void test_join_strings();
+
 #endif //UNTITLED_STRING__H
