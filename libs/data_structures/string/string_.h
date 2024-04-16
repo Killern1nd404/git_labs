@@ -177,4 +177,8 @@ bool are_two_words_with_similar_characters(char *s1, char *s2);
 
 void test_has_words_with_similar_characters();
 
+void get_string_without_words_like_last_word(char *string, char *result);
+
+void test_get_string_without_words_like_last_word();
+
 #endif //UNTITLED_STRING__H
