@@ -704,18 +704,6 @@ void wordDescriptorToString(WordDescriptor word, char *destination) {
     copy(word.begin, word.end, destination);
 }
 
-/*bool is_word_in_BagOfWords(BagOfWords bag, WordDescriptor word) {
-    char word1[MAX_WORD_SIZE];
-    char word2[MAX_WORD_SIZE];
-    wordDescriptorToString(word, word1);
-
-    for (int i = bag.size; i > 0; i--) {
-        if (are_two_words_equal(word, bag.words[i - 1])) {
-
-        }
-    }
-}*/
-
 char* getLastWordInFirstStringInSecondString(char *s1, char *s2) {
     getBagOfWords(&_bag, s1);
     getBagOfWords(&_bag2, s2);
@@ -740,11 +728,36 @@ void test_getLastWordInFirstStringInSecondString() {
 
     char s2_1[] = "One Two Zero Three";
     char s2_2[] = "One Zero Five";
-    //ASSERT_STRING(getLastWordInFirstStringInSecondString(s2_1, s2_2), "Zero");
+    ASSERT_STRING(getLastWordInFirstStringInSecondString(s2_1, s2_2), "Zero");
 
     char s3_1[] = "One Three Five";
     char s3_2[] = "Two Four";
     ASSERT_STRING(getLastWordInFirstStringInSecondString(s3_1, s3_2), "");
+}
+
+bool has_same_words(char *string) {
+    getBagOfWords(&_bag, string);
+
+    for (int i = 0; i < _bag.size; i++) {
+        for (int j = i + 1; j < _bag.size; j++) {
+            if (are_two_words_equal(_bag.words[i], _bag.words[j])) {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+void test_has_same_words() {
+    char s1[] = "";
+    assert(!has_same_words(s1));
+
+    char s2[] = "one two three";
+    assert(!has_same_words(s2));
+
+    char s3[] = "one two one";
+    assert(has_same_words(s3));
 }
 
 /*int getWord2(char *beginSearch, WordDescriptor *word) {
@@ -806,6 +819,7 @@ void test_string_() {
     test_count_palindromes();
     test_join_strings();
     test_reverse_words_order();
-    test_getWordBeforeFirstWordWithA();*/
-    test_getLastWordInFirstStringInSecondString();
+    test_getWordBeforeFirstWordWithA();
+    test_getLastWordInFirstStringInSecondString();*/
+    test_has_same_words();
 }
