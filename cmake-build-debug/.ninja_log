@@ -77,3 +77,13 @@
 25	408	7349682110845876	libs/data_structures/CMakeFiles/data_structures.dir/string/string_.c.obj	89c14e6e3a1f3439
 408	716	7349682113990113	libs/data_structures/libdata_structures.a	e06e9e25e9c7ad6a
 717	1061	7349682117344794	project.exe	20dbde58ca99ac53
+8	290	7349701807647573	CMakeFiles/project.dir/main.c.obj	e02c889176325ab9
+25	505	7349701809803401	libs/data_structures/CMakeFiles/data_structures.dir/string/string_.c.obj	89c14e6e3a1f3439
+505	766	7349701812460614	libs/data_structures/libdata_structures.a	e06e9e25e9c7ad6a
+766	1096	7349701815682850	project.exe	20dbde58ca99ac53
+7	421	7349701902902007	libs/data_structures/CMakeFiles/data_structures.dir/string/string_.c.obj	89c14e6e3a1f3439
+421	613	7349701904829169	libs/data_structures/libdata_structures.a	e06e9e25e9c7ad6a
+613	888	7349701907486675	project.exe	20dbde58ca99ac53
+7	349	7349701971485472	libs/data_structures/CMakeFiles/data_structures.dir/string/string_.c.obj	89c14e6e3a1f3439
+350	583	7349701973862528	libs/data_structures/libdata_structures.a	e06e9e25e9c7ad6a
+583	843	7349701976368254	project.exe	20dbde58ca99ac53
