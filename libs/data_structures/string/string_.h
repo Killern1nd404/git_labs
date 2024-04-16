@@ -161,4 +161,12 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(char *s, WordDesc
 
 void test_getWordBeforeFirstWordWithA();
 
+void wordDescriptorToString(WordDescriptor word, char *destination);
+
+char* getLastWordInFirstStringInSecondString(char *s1, char *s2);
+
+//bool is_word_in_BagOfWords(BagOfWords bag, WordDescriptor word);
+
+void test_getLastWordInFirstStringInSecondString();
+
 #endif //UNTITLED_STRING__H
