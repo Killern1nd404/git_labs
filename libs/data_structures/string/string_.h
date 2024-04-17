@@ -192,4 +192,8 @@ WordPrecedingFirstCommonWordReturnCode get_word_preceding_first_common_word(char
 
 void test_get_word_preceding_first_common_word();
 
+void delete_palindromes(char *string);
+
+void test_delete_palindromes();
+
 #endif //UNTITLED_STRING__H
