@@ -966,77 +966,56 @@ void test_is_string_contain_all_letter() {
     assert(!is_string_contain_all_letter(s3, w3));
 }
 
-/*void complement_smaller_string(char *string1, int n1, char *string2, int n2) {
+void complement_smaller_string(char *string1, char *string2) {
     getBagOfWords(&_bag, string1);
     getBagOfWords(&_bag2, string2);
 
     if (_bag.size > _bag2.size) {
-
-        char *begin = string2 + strlen_(string2);
-        *begin++ = ' ';
-        for (int i = _bag2.size; i < _bag.size; i++) {
-            copy(_bag.words[i].begin, _bag.words[i].end, string2 + strlen_(string2));
-        }
-    }
-            /*for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
-                *begin++ = *s;
-            }
-            *begin++ = ' ';
-        }
-        *--begin = '\0';
-    }
-    /*if (n1 > n2) {
-        char *begin = string2 + strlen_(string2);
-        *begin++ = ' ';
-        getBagOfWords(&_bag, string1);
-        for (int i = n2; i < n1; i++) {
+        char stringBuffer[MAX_STRING_SIZE + 1];
+        int size = 0;
+        for (size_t i = _bag2.size; i < _bag.size; i++) {
+            stringBuffer[size++] = ' ';
             for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
-                *begin++ = *s;
+                stringBuffer[size++] = *s;
             }
-            *begin++ = ' ';
         }
-
-        *--begin = '\0';
-    } else if (n2 > n1) {
-        //char *begin
-        getBagOfWords(&_bag, string2);
-
-        for (int i = n1; i < n2; i++) {
-            for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
-                *string1++ = *s;
+        copy(stringBuffer, stringBuffer + size, string2 + strlen_(string2));
+    } else if (_bag2.size > _bag.size) {
+        char stringBuffer[MAX_STRING_SIZE + 1];
+        int size = 0;
+        for (size_t i = _bag.size; i < _bag2.size; i++) {
+            stringBuffer[size++] = ' ';
+            for (char *s = _bag2.words[i].begin; s != _bag2.words[i].end; s++) {
+                stringBuffer[size++] = *s;
             }
-            *string1++ = ' ';
         }
-
-        *--string1 = '\0';
+        copy(stringBuffer, stringBuffer + size, string1 + strlen_(string1));
     }
 }
 
 void test_complement_smaller_string() {
-    /*char s1_1[] = "";
+    char s1_1[] = "";
     char s1_2[] = "";
-    complement_smaller_string(s1_1, 0, s1_2, 0);
+    complement_smaller_string(s1_1, s1_2);
     ASSERT_STRING(s1_1, "");
-    ASSERT_STRING(s1_2, "");*/
+    ASSERT_STRING(s1_2, "");
 
-    /*char s2_1[] = "zero one two";
+    char s2_1[] = "zero one two";
     char s2_2[] = "three five four";
-    complement_smaller_string(s2_1, 3, s2_2, 3);
+    complement_smaller_string(s2_1, s2_2);
     ASSERT_STRING(s2_1, "zero one two");
     ASSERT_STRING(s2_2, "three five four");
 
     char s3_1[] = "zero one two";
     char s3_2[] = "three";
-    complement_smaller_string(s3_1, 3, s3_2, 1);
-    ASSERT_STRING(s3_1, "zero one two");
+    complement_smaller_string(s3_1, s3_2);
     ASSERT_STRING(s3_2, "three one two");
 
-    /*char s4_1[] = "zero";
+    char s4_1[] = "zero";
     char s4_2[] = "five one two";
-    complement_smaller_string(s4_1, 1, s4_2, 3);
+    complement_smaller_string(s4_1, s4_2);
     ASSERT_STRING(s4_1, "zero one two");
-    ASSERT_STRING(s4_2, "five one two");
-}*/
+}
 
 /*int getWord2(char *beginSearch, WordDescriptor *word) {
     word->begin = findNonSpace(beginSearch);
@@ -1135,7 +1114,7 @@ void test_string_() {
     test_get_string_without_words_like_last_word();
     test_get_word_preceding_first_common_word();
     test_delete_palindromes();
-    //test_complement_smaller_string();
-    test_is_string_contain_all_letter();*/
-    test_removeAdjacentEqualLetters();
+    test_is_string_contain_all_letter();
+    test_removeAdjacentEqualLetters();*/
+    test_complement_smaller_string();
 }

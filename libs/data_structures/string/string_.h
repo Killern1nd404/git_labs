@@ -114,13 +114,9 @@ void test_removeNonLetters();
 
 char* copy_if_not_extra_spaces(char *beginSource, const char *endSource, char *beginDestination);
 
-
-
 void removeAdjacentEqualLetters(char *s);
 
 void test_removeAdjacentEqualLetters();
-
-
 
 void removeExtraSpaces(char *s);
 
@@ -204,7 +200,7 @@ void delete_palindromes(char *string);
 
 void test_delete_palindromes();
 
-void complement_smaller_string(char *string1, int n1, char *string2, int n2);
+void complement_smaller_string(char *string1, char *string2);
 
 void test_complement_smaller_string();
 
