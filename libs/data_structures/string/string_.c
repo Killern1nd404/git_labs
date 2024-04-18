@@ -1058,6 +1058,37 @@ void test() {
     }
 }*/
 
+void removeAdjacentEqualLetters(char *s) {
+    if (*s != '\0') {
+        s++;
+    }
+
+    char *read_buffer = s;
+
+    while (*read_buffer != '\0') {
+        if (*read_buffer != *(--s)) {
+            *(++s) = *read_buffer;
+        }
+        s++;
+        read_buffer++;
+    }
+    *s = '\0';
+}
+
+void test_removeAdjacentEqualLetters() {
+    char s1[] = "";
+    removeAdjacentEqualLetters(s1);
+    ASSERT_STRING(s1, "");
+
+    char s2[] = "zero";
+    removeAdjacentEqualLetters(s2);
+    ASSERT_STRING(s2, "zero");
+
+    char s3[] = "zzeeeeroooo";
+    removeAdjacentEqualLetters(s3);
+    ASSERT_STRING(s3, "zero");
+}
+
 void test_string_() {
     /*test_find_1();
     test_find_2();
@@ -1104,6 +1135,7 @@ void test_string_() {
     test_get_string_without_words_like_last_word();
     test_get_word_preceding_first_common_word();
     test_delete_palindromes();
-    //test_complement_smaller_string();*/
-    test_is_string_contain_all_letter();
+    //test_complement_smaller_string();
+    test_is_string_contain_all_letter();*/
+    test_removeAdjacentEqualLetters();
 }

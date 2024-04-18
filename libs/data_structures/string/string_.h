@@ -114,6 +114,14 @@ void test_removeNonLetters();
 
 char* copy_if_not_extra_spaces(char *beginSource, const char *endSource, char *beginDestination);
 
+
+
+void removeAdjacentEqualLetters(char *s);
+
+void test_removeAdjacentEqualLetters();
+
+
+
 void removeExtraSpaces(char *s);
 
 void test_removeExtraSpaces_1();
