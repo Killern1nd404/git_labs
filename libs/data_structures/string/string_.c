@@ -913,7 +913,7 @@ void delete_palindromes(char *string) {
         }
     }
     result[size--] = '\0';
-    result[size--] = '\0';
+    //result[size--] = '\0';
     copy(result, result + strlen_(result), string);
 }
 
@@ -934,6 +934,109 @@ void test_delete_palindromes() {
     delete_palindromes(s4);
     ASSERT_STRING(s4, "");
 }
+
+bool is_string_contain_all_letter(char *string, char *word) {
+    if (strlen_(word) == 0) {
+        return false;
+    }
+
+    size_t string_size = strlen_(string);
+    size_t word_size = strlen_(word);
+
+    for (char *s = word; s != word + word_size; s++) {
+        if (find(string, string + string_size, *s) == string + string_size) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void test_is_string_contain_all_letter() {
+    char s1[] = "";
+    char w1[] = "";
+    assert(!is_string_contain_all_letter(s1, w1));
+
+    char s2[] = "zero one five";
+    char w2[] = "zeone";
+    assert(is_string_contain_all_letter(s2, w2));
+
+    char s3[] = "zero one five";
+    char w3[] = "zed";
+    assert(!is_string_contain_all_letter(s3, w3));
+}
+
+/*void complement_smaller_string(char *string1, int n1, char *string2, int n2) {
+    getBagOfWords(&_bag, string1);
+    getBagOfWords(&_bag2, string2);
+
+    if (_bag.size > _bag2.size) {
+
+        char *begin = string2 + strlen_(string2);
+        *begin++ = ' ';
+        for (int i = _bag2.size; i < _bag.size; i++) {
+            copy(_bag.words[i].begin, _bag.words[i].end, string2 + strlen_(string2));
+        }
+    }
+            /*for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
+                *begin++ = *s;
+            }
+            *begin++ = ' ';
+        }
+        *--begin = '\0';
+    }
+    /*if (n1 > n2) {
+        char *begin = string2 + strlen_(string2);
+        *begin++ = ' ';
+        getBagOfWords(&_bag, string1);
+        for (int i = n2; i < n1; i++) {
+            for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
+                *begin++ = *s;
+            }
+            *begin++ = ' ';
+        }
+
+        *--begin = '\0';
+    } else if (n2 > n1) {
+        //char *begin
+        getBagOfWords(&_bag, string2);
+
+        for (int i = n1; i < n2; i++) {
+            for (char *s = _bag.words[i].begin; s != _bag.words[i].end; s++) {
+                *string1++ = *s;
+            }
+            *string1++ = ' ';
+        }
+
+        *--string1 = '\0';
+    }
+}
+
+void test_complement_smaller_string() {
+    /*char s1_1[] = "";
+    char s1_2[] = "";
+    complement_smaller_string(s1_1, 0, s1_2, 0);
+    ASSERT_STRING(s1_1, "");
+    ASSERT_STRING(s1_2, "");*/
+
+    /*char s2_1[] = "zero one two";
+    char s2_2[] = "three five four";
+    complement_smaller_string(s2_1, 3, s2_2, 3);
+    ASSERT_STRING(s2_1, "zero one two");
+    ASSERT_STRING(s2_2, "three five four");
+
+    char s3_1[] = "zero one two";
+    char s3_2[] = "three";
+    complement_smaller_string(s3_1, 3, s3_2, 1);
+    ASSERT_STRING(s3_1, "zero one two");
+    ASSERT_STRING(s3_2, "three one two");
+
+    /*char s4_1[] = "zero";
+    char s4_2[] = "five one two";
+    complement_smaller_string(s4_1, 1, s4_2, 3);
+    ASSERT_STRING(s4_1, "zero one two");
+    ASSERT_STRING(s4_2, "five one two");
+}*/
 
 /*int getWord2(char *beginSearch, WordDescriptor *word) {
     word->begin = findNonSpace(beginSearch);
@@ -999,6 +1102,8 @@ void test_string_() {
     test_has_same_words();
     test_has_words_with_similar_characters();
     test_get_string_without_words_like_last_word();
-    test_get_word_preceding_first_common_word();*/
+    test_get_word_preceding_first_common_word();
     test_delete_palindromes();
+    //test_complement_smaller_string();*/
+    test_is_string_contain_all_letter();
 }

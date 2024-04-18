@@ -196,4 +196,12 @@ void delete_palindromes(char *string);
 
 void test_delete_palindromes();
 
+void complement_smaller_string(char *string1, int n1, char *string2, int n2);
+
+void test_complement_smaller_string();
+
+bool is_string_contain_all_letter(char *string, char *word);
+
+void test_is_string_contain_all_letter();
+
 #endif //UNTITLED_STRING__H
