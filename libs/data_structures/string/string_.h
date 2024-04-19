@@ -214,4 +214,10 @@ bool is_string_contain_all_letter(char *string, char *word);
 
 void test_is_string_contain_all_letter();
 
+bool are_two_words_ordered(WordDescriptor word1, WordDescriptor word2);
+
+bool are_words_ordered(char *string);
+
+void test_are_words_ordered();
+
 #endif //UNTITLED_STRING__H

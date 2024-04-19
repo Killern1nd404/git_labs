@@ -1048,26 +1048,6 @@ void test_complement_smaller_string() {
     ASSERT_STRING(s4_1, "zero one two");
 }
 
-/*int getWord2(char *beginSearch, WordDescriptor *word) {
-    word->begin = findNonSpace(beginSearch);
-    if (*word->begin == '\0')
-        return 0;
-    word->end = findSpace(word->begin);
-    return 1;
-}
-
-void test() {
-    char new_string[10];
-    char string[] = "ddsssd sdsd";
-    WordDescriptor word;
-    char *beginSearch = string;
-    while (getWord2(beginSearch, &word)) {
-        copy(word.begin, word.end, new_string);
-        printf("%s\n", new_string);
-        beginSearch = word.end;
-    }
-}*/
-
 void removeAdjacentEqualLetters(char *s) {
     if (*s != '\0') {
         s++;
@@ -1097,6 +1077,52 @@ void test_removeAdjacentEqualLetters() {
     char s3[] = "zzeeeeroooo";
     removeAdjacentEqualLetters(s3);
     ASSERT_STRING(s3, "zero");
+}
+
+bool are_two_words_ordered(WordDescriptor word1, WordDescriptor word2) {
+    char *string1 = word1.begin;
+    char *string2 = word2.begin;
+
+    while (*string1 != '\0' || *string1 != ' ') {
+        if (*string2 - 'a' < *string1 - 'a' || *string2 == '\0' || *string2 == ' ') {
+            return false;
+        } else if (*string2 - 'a' > *string1 - 'a') {
+            return true;
+        }
+        string1++;
+        string2++;
+    }
+    return true;
+}
+
+bool are_words_ordered(char *string) {
+    WordDescriptor word1, word2;
+
+    if (getWord(string, &word1)) {
+        word2 = word1;
+        char *string_ = word1.end;
+        while (getWord(string_, &word1)) {
+            if (!are_two_words_ordered(word2, word1)) {
+                return false;
+            }
+            word2 = word1;
+            string_ = word1.end;
+        }
+        return true;
+    } else {
+        return true;
+    }
+}
+
+void test_are_words_ordered() {
+    char string1[] = "";
+    assert(are_words_ordered(string1));
+
+    char string2[] = "zero one two";
+    assert(!are_words_ordered(string2));
+
+    char string3[] = "one two zero";
+    assert(are_words_ordered(string3));
 }
 
 void test_string_() {
@@ -1129,11 +1155,11 @@ void test_string_() {
     test_removeNonLetters();
     test_removeExtraSpaces_1();
     test_removeExtraSpaces_2();
-    test_removeExtraSpaces_3();*/
+    test_removeExtraSpaces_3();
     test_WordDescriptor();
-    /*test_replace_digits_with_spaces();
-    //test_are_words_in_string_ordered();
-    test_replace();
+    test_replace_digits_with_spaces();*/
+    test_are_words_ordered();
+    /*test_replace();
     test_print_words_in_reversed_order();
     test_count_palindromes();
     test_join_strings();
