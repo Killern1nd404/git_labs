@@ -390,6 +390,15 @@ void digits_to_end_and_reverse(char *string) {
     }
 }
 
+void letters_to_end(char *string) {
+    WordDescriptor word;
+    char *beginSearch = string;
+    while (getWord(beginSearch, &word)) {
+        digitToStart(word);
+        beginSearch = word.end;
+    }
+}
+
 void test_WordDescriptor() {
     char string1[] = "he13l3lo8";
     digits_to_end(string1);
@@ -398,6 +407,10 @@ void test_WordDescriptor() {
     char string2[] = "he13l3lo8";
     digits_to_end_and_reverse(string2);
     ASSERT_STRING("hello8331", string2);
+
+    char string3[] = "he13l3lo8";
+    letters_to_end(string3);
+    ASSERT_STRING(string3, "1338hello");
 }
 
 void replace_digits_with_spaces(char *string) {
