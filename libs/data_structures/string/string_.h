@@ -132,7 +132,13 @@ void digitToStart(WordDescriptor word);
 
 void digitToEnd(WordDescriptor word);
 
+void digitToEndAndReverse(WordDescriptor word);
+
 void digits_to_end(char *string);
+
+void digits_to_end_and_reverse(char *string);
+
+//void letters_ro_end(char *string);
 
 void test_WordDescriptor();
 

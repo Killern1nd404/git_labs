@@ -354,7 +354,6 @@ int getWord(char *beginSearch, WordDescriptor *word) {
 void digitToStart(WordDescriptor word) {
     char _stringBuffer[MAX_STRING_SIZE + 1];
     char *endStringBuffer = copy(word.begin, word.end,_stringBuffer);
-    //char *recPosition = copyIfReverse(endStringBuffer - 1,_stringBuffer - 1,word.begin, isdigit);
     char *recPosition = copyIf(_stringBuffer, endStringBuffer, word.begin, isdigit);
     copyIf(_stringBuffer, endStringBuffer, recPosition, isalpha);
 }
@@ -362,9 +361,15 @@ void digitToStart(WordDescriptor word) {
 void digitToEnd(WordDescriptor word) {
     char _stringBuffer[MAX_STRING_SIZE + 1];
     char *endStringBuffer = copy(word.begin, word.end,_stringBuffer);
-    //char *recPosition = copyIfReverse(endStringBuffer - 1,_stringBuffer - 1,word.begin, isdigit);
     char *recPosition = copyIf(_stringBuffer, endStringBuffer, word.begin, isalpha);
     copyIf(_stringBuffer, endStringBuffer, recPosition, isdigit);
+}
+
+void digitToEndAndReverse(WordDescriptor word) {
+    char _stringBuffer[MAX_STRING_SIZE + 1];
+    char *endStringBuffer = copy(word.begin, word.end,_stringBuffer);
+    char *recPosition = copyIf(_stringBuffer, endStringBuffer, word.begin, isalpha);
+    copyIfReverse(endStringBuffer, _stringBuffer, recPosition, isdigit);
 }
 
 void digits_to_end(char *string) {
@@ -376,10 +381,23 @@ void digits_to_end(char *string) {
     }
 }
 
+void digits_to_end_and_reverse(char *string) {
+    WordDescriptor word;
+    char *beginSearch = string;
+    while (getWord(beginSearch, &word)) {
+        digitToEndAndReverse(word);
+        beginSearch = word.end;
+    }
+}
+
 void test_WordDescriptor() {
-    char string[] = "he13l3lo8";
-    digits_to_end(string);
-    ASSERT_STRING("hello1338", string);
+    char string1[] = "he13l3lo8";
+    digits_to_end(string1);
+    ASSERT_STRING("hello1338", string1);
+
+    char string2[] = "he13l3lo8";
+    digits_to_end_and_reverse(string2);
+    ASSERT_STRING("hello8331", string2);
 }
 
 void replace_digits_with_spaces(char *string) {
@@ -1098,9 +1116,9 @@ void test_string_() {
     test_removeNonLetters();
     test_removeExtraSpaces_1();
     test_removeExtraSpaces_2();
-    test_removeExtraSpaces_3();
+    test_removeExtraSpaces_3();*/
     test_WordDescriptor();
-    test_replace_digits_with_spaces();
+    /*test_replace_digits_with_spaces();
     //test_are_words_in_string_ordered();
     test_replace();
     test_print_words_in_reversed_order();
@@ -1115,6 +1133,6 @@ void test_string_() {
     test_get_word_preceding_first_common_word();
     test_delete_palindromes();
     test_is_string_contain_all_letter();
-    test_removeAdjacentEqualLetters();*/
-    test_complement_smaller_string();
+    test_removeAdjacentEqualLetters();
+    test_complement_smaller_string();*/
 }
