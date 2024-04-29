@@ -838,6 +838,7 @@ void test_has_words_with_similar_characters() {
     char s3[] = "one two eno";
     assert(has_words_with_similar_characters(s3));
 }
+
 void get_string_without_words_like_last_word(char *string, char *result) {
     getBagOfWords(&_bag, string);
     int size = 0;
