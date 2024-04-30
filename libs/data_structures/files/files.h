@@ -17,9 +17,9 @@ void represent_as_floating_point_numbers(char *file_name);
 
 void test_represent_as_floating_point_numbers();
 
-//void calculate_expression(char *file_name);
+void calculate_expression(char *file_name);
 
-//void test_calculate_expression();
+void test_calculate_expression();
 
 //void save_only_words_with_sequence(char *file_name, char *sequence);
 
