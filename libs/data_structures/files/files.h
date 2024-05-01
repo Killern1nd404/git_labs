@@ -21,9 +21,9 @@ void calculate_expression(char *file_name);
 
 void test_calculate_expression();
 
-//void save_only_words_with_sequence(char *file_name, char *sequence);
+void save_only_words_with_sequence(char *file_name, char *sequence);
 
-//void test_save_only_words_with_sequence();
+void test_save_only_words_with_sequence();
 
 void save_only_longest_word_in_string(char *file_name);
 
