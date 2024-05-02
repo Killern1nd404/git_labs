@@ -11,8 +11,10 @@
 #include "DM/lab1_3/lab1_3.h"
 #include "DM/lab1_4/lab1_4.h"*/
 #include "libs/data_structures/files/files.h"
+#include <windows.h>
+#include <locale.h>
 
-int main() {;
+int main() {
     //test_string_();
     //check_results();
     //calculate();
