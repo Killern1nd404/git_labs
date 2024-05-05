@@ -97,6 +97,12 @@ build CMakeFiles/project.dir/DM/lab1_4/lab1_4.c.obj: C_COMPILER__project_unscann
   OBJECT_DIR = CMakeFiles\project.dir
   OBJECT_FILE_DIR = CMakeFiles\project.dir\DM\lab1_4
 
+build CMakeFiles/project.dir/DM/lab2_1/lab2_1.c.obj: C_COMPILER__project_unscanned_Debug C$:/Users/andre/CLionProjects/Project/DM/lab2_1/lab2_1.c || cmake_object_order_depends_target_project
+  DEP_FILE = CMakeFiles\project.dir\DM\lab2_1\lab2_1.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\project.dir
+  OBJECT_FILE_DIR = CMakeFiles\project.dir\DM\lab2_1
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target project
@@ -105,7 +111,7 @@ build CMakeFiles/project.dir/DM/lab1_4/lab1_4.c.obj: C_COMPILER__project_unscann
 #############################################
 # Link the executable project.exe
 
-build project.exe: C_EXECUTABLE_LINKER__project_Debug CMakeFiles/project.dir/main.c.obj CMakeFiles/project.dir/libs/algorithms/array/array.c.obj CMakeFiles/project.dir/libs/algorithms/algorithm.c.obj CMakeFiles/project.dir/libs/data_structures/bitset/bitset.c.obj CMakeFiles/project.dir/OP/lab13/lab13.c.obj CMakeFiles/project.dir/DM/lab1_1/lab1_1.c.obj CMakeFiles/project.dir/DM/lab1_3/lab1_3.c.obj CMakeFiles/project.dir/DM/lab1_4/lab1_4.c.obj | libs/data_structures/libdata_structures.a libs/algorithms/libalgorithms.a || libs/algorithms/libalgorithms.a libs/data_structures/libdata_structures.a
+build project.exe: C_EXECUTABLE_LINKER__project_Debug CMakeFiles/project.dir/main.c.obj CMakeFiles/project.dir/libs/algorithms/array/array.c.obj CMakeFiles/project.dir/libs/algorithms/algorithm.c.obj CMakeFiles/project.dir/libs/data_structures/bitset/bitset.c.obj CMakeFiles/project.dir/OP/lab13/lab13.c.obj CMakeFiles/project.dir/DM/lab1_1/lab1_1.c.obj CMakeFiles/project.dir/DM/lab1_3/lab1_3.c.obj CMakeFiles/project.dir/DM/lab1_4/lab1_4.c.obj CMakeFiles/project.dir/DM/lab2_1/lab2_1.c.obj | libs/data_structures/libdata_structures.a libs/algorithms/libalgorithms.a || libs/algorithms/libalgorithms.a libs/data_structures/libdata_structures.a
   FLAGS = -g
   LINK_LIBRARIES = libs/data_structures/libdata_structures.a  libs/algorithms/libalgorithms.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\project.dir

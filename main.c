@@ -11,15 +11,25 @@
 #include "DM/lab1_3/lab1_3.h"
 #include "DM/lab1_4/lab1_4.h"*/
 #include "libs/data_structures/files/files.h"
-#include <windows.h>
-#include <locale.h>
+#include "DM/lab2_1/lab2_1.h"
 
 int main() {
     //test_string_();
     //check_results();
     //calculate();
     //test_make_matrix_storage_by_columns();
+
     test_files();
+
+    //test_files();
+    /*double time_spend = 0.0;
+    clock_t begin = clock();*/
+   // lab2_1_8();
+    /*sleep(3);
+    clock_t end = clock();
+
+    time_spend += (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Program time: %f", time_spend);*/
 
     return 0;
 }

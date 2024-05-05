@@ -2,6 +2,14 @@
 #include <memory.h>
 #include <malloc.h>
 
+int pow(int a, int b) {
+    int result = a;
+    for (int i = 1; i < b; i++) {
+        result *= a;
+    }
+    return a;
+}
+
 int compare_ints(const void* a, const void* b) {
     int arg1 = *(const int*)a;
     int arg2 = *(const int*)b;
@@ -29,7 +37,7 @@ int printArray(int a[], size_t n) {
     }
 }
 
-void merge(const int *a, const size_t n, const int *b, const size_t m, const int *c) {
+/*void merge(const int *a, const size_t n, const int *b, const size_t m, const int *c) {
 
 }
 
@@ -51,4 +59,4 @@ void mergeSort(int *a, const size_t n) {
     int *buffer = (int*)malloc(n*sizeof(int));
     mergeSort_(a, 0, n, buffer);
     free(buffer);
-}
+}*/
