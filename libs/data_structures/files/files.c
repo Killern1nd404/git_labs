@@ -639,14 +639,14 @@ void test_update_products_information() {
 }
 
 void test_files() {
-    //test_make_matrix_storage_by_columns();
-    //test_calculate_expression();
-    //test_save_only_words_with_sequence();
-    //test_save_only_longest_word_in_string();
-    //test_represent_as_floating_point_numbers();
+    test_make_matrix_storage_by_columns();
+    test_calculate_expression();
+    test_save_only_words_with_sequence();
+    test_save_only_longest_word_in_string();
+    test_represent_as_floating_point_numbers();
     test_remove_polynomials_if_x_sqrt_root();
-    //test_sort_negative_after_positive();
-    //test_transpose_non_symmetric_matrices();
-    //test_make_team();
-    //test_update_products_information();
+    test_sort_negative_after_positive();
+    test_transpose_non_symmetric_matrices();
+    test_make_team();
+    test_update_products_information();
 }

@@ -12,14 +12,10 @@
 #include "DM/lab1_4/lab1_4.h"*/
 #include "libs/data_structures/files/files.h"
 #include "DM/lab2_1/lab2_1.h"
+#include "C:\Users\andre\CLionProjects\Project\OP\lab20\lab20.h"
 
 int main() {
-    //test_string_();
-    //check_results();
-    //calculate();
-    //test_make_matrix_storage_by_columns();
-
-    test_files();
+    test_lab20();
 
     //test_files();
     /*double time_spend = 0.0;

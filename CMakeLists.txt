@@ -19,7 +19,9 @@ add_executable(project main.c
         DM/lab1_4/lab1_4.c
         DM/lab1_4/lab1_4.h
         DM/lab2_1/lab2_1.c
-        DM/lab2_1/lab2_1.h)
+        DM/lab2_1/lab2_1.h
+        OP/lab20/lab20.c
+        OP/lab20/lab20.h)
 
 add_subdirectory(libs)
 target_link_libraries(project data_structures)
