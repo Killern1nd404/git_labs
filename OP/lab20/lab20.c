@@ -127,7 +127,68 @@ void test_task_2() {
     }
 }
 
+void get_median(int filter, int matrix[filter][filter], int i, int j) {
+    int neighboring_elements[8];
+
+    neighboring_elements[0] = matrix[i - 1][j];
+    neighboring_elements[1] = matrix[i - 1][j + 1];
+    neighboring_elements[2] = matrix[i][j + 1];
+    neighboring_elements[3] = matrix[i + 1][j + 1];
+    neighboring_elements[4] = matrix[i + 1][j];
+    neighboring_elements[5] = matrix[i + 1][j - 1];
+    neighboring_elements[6] = matrix[i][j - 1];
+    neighboring_elements[7] = matrix[i - 1][j - 1];
+
+    for (int i_ = 0; i_ < 8; i_++) {
+        for (int j_ = 0; j_ < i_; j_++) {
+            if (neighboring_elements[i_] < neighboring_elements[j_]) {
+                int temp = neighboring_elements[i_];
+                neighboring_elements[i_] = neighboring_elements[j_];
+                neighboring_elements[j_] = temp;
+            }
+        }
+    }
+
+    matrix[i][j] = neighboring_elements[4];
+}
+
+void task_3(int filter, int matrix[filter][filter]) {
+    if (filter % 2 == 0) {
+        perror("The window size should be be an odd number.");
+        return;
+    }
+
+    for (int i = 1; i < filter - 1; i++) {
+        for (int j = 1; j < filter - 1; j++) {
+            get_median(filter, matrix, i, j);
+        }
+    }
+}
+
+void test_task_3() {
+    int matrix_1[3][3] = {{10, 20, 30}, {25, 35, 45}, {15, 25, 35}};
+    int filter_1 = 3;
+    task_3(filter_1, matrix_1);
+    int true_data_1[3][3] = {{10, 20, 30}, {25, 25, 45}, {15, 25, 35}};
+    for (int i = 0; i < filter_1; i++) {
+        for (int j = 0; j < filter_1; j++) {
+            assert(matrix_1[i][j] == true_data_1[i][j]);
+        }
+    }
+
+    int matrix_2[5][5] = {{15, 10, 15, 20, 30}, {45, 10, 35, 20, 40}, {35, 25, 10, 45, 15}, {30, 15, 50, 10, 5}, {15, 20, 40, 35, 10}};
+    int filter_2 = 5;
+    task_3(filter_2, matrix_2);
+    int true_data_2[5][5] = {{15, 10, 15, 20, 30}, {45, 25, 20, 20, 40}, {35, 30, 25, 20, 15}, {30, 30, 30, 25, 5}, {15,20, 40, 35, 10}};
+    for (int i = 0; i < filter_2; i++) {
+        for (int j = 0; j < filter_2; j++) {
+            assert(matrix_2[i][j] == true_data_2[i][j]);
+        }
+    }
+}
+
 void test_lab20() {
     //test_task_1();
-    test_task_2();
+    //test_task_2();
+    test_task_3();
 }
