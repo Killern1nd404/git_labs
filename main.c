@@ -14,9 +14,9 @@
 #include "DM/lab2_1/lab2_1.h"
 #include "C:\Users\andre\CLionProjects\Project\OP\lab20\lab20.h"
 
-int main() {
-    test_lab20();
+int main(int argc, char **argv) {
+    //test_lab20();
     //lab2_1_8();
-
+    test_task_9(argc, argv);
     return 0;
 }

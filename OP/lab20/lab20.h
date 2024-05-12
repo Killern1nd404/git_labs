@@ -47,6 +47,12 @@ void task_8(char *s, int *indices, char *result, int size);
 
 void test_task_8();
 
+void fill_file(int *numbers, int size, char *file_name);
+
+void task_9(int *numbers, int size, int n, char *file_name_1, char *file_name_2);
+
+void test_task_9(int argc, char **argv);
+
 /*root_node *insert(root_node *node, int number, bool is_left);
 
 root_node *create_root_node(int number);
