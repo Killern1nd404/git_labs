@@ -324,6 +324,44 @@ void test_task_5() {
 }
 
 
+void task_6(char *string, int len, char *result, int *result_len) {
+    char buffer[10];
+    int buffer_len = 0;
+    int new_result_len = 0;
+    char num = '1';
+
+    for (int i = 0; i < len; i++) {
+        buffer[buffer_len++] = num++;
+        if (string[i] == 'I') {
+            while (buffer_len > 0) {
+                result[new_result_len++] = buffer[--buffer_len];
+            }
+        }
+    }
+
+    buffer[buffer_len++] = num;
+
+    while (buffer_len > 0) {
+        result[new_result_len++] = buffer[--buffer_len];
+    }
+
+    result[new_result_len] = '\0';
+
+    *result_len = new_result_len;
+}
+
+void test_task_6() {
+    char patter[10] = "IIIDIDDD";
+    int pattern_length = 8;
+    char true_data[10] = "123549876";
+    char result[10];
+    int result_length;
+    task_6(patter, pattern_length, result, &result_length);
+
+    assert(strcmp(result, true_data) == 0);
+}
+
+
 
 /*int searchMaxIdx(const int array[], int start, int end) {
     if (start > end) {
@@ -426,6 +464,7 @@ void test_lab20() {
     //test_task_2();
     //test_task_3();
     //test_task_4();
-    test_task_5();
+    //test_task_5();
+    test_task_6();
     //test_task_7();
 }

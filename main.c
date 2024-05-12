@@ -16,16 +16,7 @@
 
 int main() {
     test_lab20();
-
-    //test_files();
-    /*double time_spend = 0.0;
-    clock_t begin = clock();*/
-   // lab2_1_8();
-    /*sleep(3);
-    clock_t end = clock();
-
-    time_spend += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Program time: %f", time_spend);*/
+    //lab2_1_8();
 
     return 0;
 }

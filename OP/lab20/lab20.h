@@ -39,6 +39,10 @@ int task_5(matrix m, int rows, int cols);
 
 void test_task_5();
 
+void task_6(char *string, int len, char *result, int *result_len);
+
+void test_task_6();
+
 /*root_node *insert(root_node *node, int number, bool is_left);
 
 root_node *create_root_node(int number);
