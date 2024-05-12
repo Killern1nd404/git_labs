@@ -43,6 +43,10 @@ void task_6(char *string, int len, char *result, int *result_len);
 
 void test_task_6();
 
+void task_8(char *s, int *indices, char *result, int size);
+
+void test_task_8();
+
 /*root_node *insert(root_node *node, int number, bool is_left);
 
 root_node *create_root_node(int number);
