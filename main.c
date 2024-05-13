@@ -17,6 +17,14 @@
 int main(int argc, char **argv) {
     //test_lab20();
     //lab2_1_8();
-    test_task_9(argc, argv);
+    //test_task_9(argc, argv);
+    test_task_10(argc, argv);
+
     return 0;
 }
+
+/*int main() {
+    lab2_1_1();
+    //test_lab20();
+    return 0;
+}*/

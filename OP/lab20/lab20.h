@@ -53,6 +53,10 @@ void task_9(int *numbers, int size, int n, char *file_name_1, char *file_name_2)
 
 void test_task_9(int argc, char **argv);
 
+void task_10(char *file_name, int n);
+
+void test_task_10(int argc, char **argv);
+
 /*root_node *insert(root_node *node, int number, bool is_left);
 
 root_node *create_root_node(int number);

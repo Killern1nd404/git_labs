@@ -1,1 +1,6 @@
-1 4 3 5 2 4 10 4 0 -1 
+string 1
+string 2
+string 3
+string 4
+string 5
+string 6
