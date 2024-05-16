@@ -7,6 +7,7 @@
 #include <signal.h>
 #include <time.h>
 #include <unistd.h>
+#include "C:\Users\andre\CLionProjects\Project\libs\data_structures\string\string_.h"
 #include "C:\Users\andre\CLionProjects\Project\libs\data_structures\files\files.h"
 
 int** task_1(int n, int query[][4], size_t size) {
@@ -193,84 +194,62 @@ void test_task_3() {
     }
 }
 
+void task_4(char **cpdomains, int size) {
+    int domains_number = 0;
 
-
-
-
-
-
-/*size_t searchDomainInResults(const domain results[], size_t size, char *s) {
-    for (size_t ind = 0; ind < size; ind++) {
-        if (strcmp(results[ind].name, s) == 0) {
-            return ind;
+    for (int i = 0; i < size; i++) {
+        size_t len = strlen(cpdomains[i]);
+        char *string = cpdomains[i];
+        for (char *s = string; s != string + len; s++) {
+            if (*s == '.') {
+                domains_number++;
+            }
         }
-    }
-    return size;
-}
-
-bool searchNumFromArray(const size_t array[], size_t length, size_t num) {
-    for (size_t ind = 0; ind < length; ind++) {
-        if (num == array[ind])
-            return true;
+        domains_number++;
     }
 
-    return false;
-}
+    domain domains[domains_number];
+    int domains_size = 0;
 
-void handlerDotPrtNotNull(domain *array, size_t ind, char *dotPtr, domain results[], size_t *sizeResult) {
-    strcpy(array[ind].name, dotPtr + 1);
-    size_t pos = searchDomainInResults(results, *sizeResult, array[ind].name);
-    if (pos == *sizeResult) {
-        results[*sizeResult] = array[ind];
-        *sizeResult += 1;
-    } else {
-        results[pos].visits += array[ind].visits;
-    }
-}
-
-void outputResultDomains(domain *results, size_t size) {
-    for (size_t ind = 0; ind < size; ind++) {
-        printf("%zd %s\n", results[ind].visits, results[ind].name);
-    }
-}
-
-void fourthTask(domain array[], size_t size) {
-    size_t close_idxs[size];
-    size_t count_close = 0;
-    domain results[200];
-    size_t size_res = 0;
-
-    for (size_t ind = 0; ind < size; ind++)
-        results[size_res++] = array[ind];
-
-    while (count_close != size) {
-        for (size_t ind = 0; ind < size; ind++) {
-            if (!searchNumFromArray(close_idxs, count_close, ind)) {
-                char *dot_ptr;
-                dot_ptr = strchr(array[ind].name, '.');
-
-                if (dot_ptr != NULL)
-                    handlerDotPrtNotNull(array, ind, dot_ptr, results, &size_res);
-                else
-                    close_idxs[count_close++] = ind;
+    for (int i = 0; i < size; i++) {
+        int visits = atoi(cpdomains[i]);
+        size_t len = strlen(cpdomains[i]);
+        char *string = cpdomains[i];
+        for (char *s = string + len; s != string; s--) {
+            if (*s == '.' || *s == ' ') {
+                bool is_new_domain = true;
+                for (int j = 0; j < domains_size && is_new_domain; j++) {
+                    if (strcmp(s + 1, domains[j].name) == 0) {
+                        domains[j].visits_number += visits;
+                        is_new_domain = false;
+                    }
+                }
+                if (is_new_domain) {
+                    domains[domains_size].visits_number = visits;
+                    domains[domains_size].name = s + 1;
+                    domains_size++;
+                }
             }
         }
     }
 
-    outputResultDomains(results, size_res);
+    for (int i = 0; i < domains_size; i++) {
+        printf("%d %s\n", domains[i].visits_number, domains[i].name);
+    }
 }
 
 void test_task_4() {
-    size_t size = 4;
-    domain array[4] = {{900, "google.mail.com"},
-                       {50,  "yahoo.com"},
-                       {1,   "intel.mail.com"},
-                       {5,   "wiki.org"}};
-
-    fourthTask(array, size);
-}*/
-
-
+    char *cpdomains_1[] = {"9001 discuss.codeforces.com"};
+    int size_1 = 1;
+    task_4(cpdomains_1, size_1);
+    printf("\n");
+    char *cpdomains_2[] = {"900 google.mail.com",
+                           "50 yahoo.com",
+                           "1 intel.mail.com",
+                           "5 wiki.org"};
+    int size_2 = 4;
+    task_4(cpdomains_2, size_2);
+}
 
 void fill_matrix(matrix m, matrix *new_matrix, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
@@ -591,9 +570,9 @@ void test_lab20() {
     //test_task_1();
     //test_task_2();
     //test_task_3();
-    //test_task_4();
+    test_task_4();
     //test_task_5();
     //test_task_6();
     //test_task_8();
-    test_task_7();
+    //test_task_7();
 }
