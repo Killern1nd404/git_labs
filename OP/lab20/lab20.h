@@ -4,16 +4,16 @@
 #include <stdio.h>
 #include "C:\Users\andre\CLionProjects\Project\libs\data_structures\matrix\matrix.h"
 
-/*typedef struct domain {
-    int visits_number;
+typedef struct domain {
+    int visits;
     char *name;
-} domain;*/
+} domain;
 
-/*typedef struct root_node {
-    int max_value;
-    struct root_node *left_prefix;
-    struct root_node *right_prefix;
-} root_node;*/
+typedef struct prefix {
+    int size;
+    int begin_index;
+    int end_index;
+} prefix;
 
 int** task_1(int n, int query[][4], size_t size);
 
@@ -31,7 +31,7 @@ void task_3(int filter, int matrix[filter][filter]);
 
 void test_task_3();
 
-//void test_task_4();
+void test_task_4();
 
 void fill_matrix(matrix m, matrix *new_matrix, int rows, int cols);
 
@@ -57,15 +57,15 @@ void task_10(char *file_name, int n);
 
 void test_task_10(int argc, char **argv);
 
-/*root_node *insert(root_node *node, int number, bool is_left);
+int get_max_element_index(int *nums, int begin_index, int end_index)
 
-root_node *create_root_node(int number);
-
-void create_root_nodes(root_node *node, int *nums, int start, int end, bool is_left);
+void get_new_node(int *nums, int size, prefix pref)
 
 void task_7(int *nums, int size);
 
-void test_task_7();*/
+void task_7(int *nums, int size);
+
+void test_task_7();
 
 void test_lab20();
 

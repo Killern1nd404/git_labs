@@ -199,76 +199,78 @@ void test_task_3() {
 
 
 
-/*int search_domain(domain *results, int size, char *s) {
-    for (int i = 0; i < size; i++) {
-        if (strcmp(results[i].name, s) == 0) {
-            return i;
+/*size_t searchDomainInResults(const domain results[], size_t size, char *s) {
+    for (size_t ind = 0; ind < size; ind++) {
+        if (strcmp(results[ind].name, s) == 0) {
+            return ind;
         }
     }
-
     return size;
 }
 
-bool search_number(int *array, int size, int number) {
-    for (int i = 0; i < size; i++) {
-        if (number == array[i])
+bool searchNumFromArray(const size_t array[], size_t length, size_t num) {
+    for (size_t ind = 0; ind < length; ind++) {
+        if (num == array[ind])
             return true;
     }
 
     return false;
 }
 
-void handle_dot_pointer(domain *array, int i, char *dot_pointer, domain *results, int *results_size) {
-    strcpy(array[i].name, dot_pointer + 1);
-    int pos = search_domain(results, *results_size, array[i].name);
-    if (pos == *results_size) {
-        results[*results_size] = array[i];
-        *results_size += 1;
+void handlerDotPrtNotNull(domain *array, size_t ind, char *dotPtr, domain results[], size_t *sizeResult) {
+    strcpy(array[ind].name, dotPtr + 1);
+    size_t pos = searchDomainInResults(results, *sizeResult, array[ind].name);
+    if (pos == *sizeResult) {
+        results[*sizeResult] = array[ind];
+        *sizeResult += 1;
     } else {
-        results[pos].visits_number += array[i].visits_number;
+        results[pos].visits += array[ind].visits;
     }
 }
 
-void output_domains(domain *results, int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%d %s\n", results[i].visits_number, results[i].name);
+void outputResultDomains(domain *results, size_t size) {
+    for (size_t ind = 0; ind < size; ind++) {
+        printf("%zd %s\n", results[ind].visits, results[ind].name);
     }
 }
 
-void task_4(domain *array, int size) {
-    int closes_indexes[size];
-    int closes_counter = 0;
-    domain results[100];
-    int results_size = 0;
+void fourthTask(domain array[], size_t size) {
+    size_t close_idxs[size];
+    size_t count_close = 0;
+    domain results[200];
+    size_t size_res = 0;
 
-    for (int i = 0; i < size; i++)
-        results[results_size++] = array[i];
+    for (size_t ind = 0; ind < size; ind++)
+        results[size_res++] = array[ind];
 
-    while (closes_counter != size) {
-        for (int i = 0; i < size; i++) {
-            if (!search_number(closes_indexes, closes_counter, i)) {
-                char *dot_pointer;
-                dot_pointer = strchr(array[i].name, '.');
+    while (count_close != size) {
+        for (size_t ind = 0; ind < size; ind++) {
+            if (!searchNumFromArray(close_idxs, count_close, ind)) {
+                char *dot_ptr;
+                dot_ptr = strchr(array[ind].name, '.');
 
-                if (dot_pointer != NULL)
-                    handle_dot_pointer(array, i, dot_pointer, results, &results_size);
+                if (dot_ptr != NULL)
+                    handlerDotPrtNotNull(array, ind, dot_ptr, results, &size_res);
                 else
-                    closes_indexes[closes_counter++] = i;
+                    close_idxs[count_close++] = ind;
             }
         }
     }
 
-    output_domains(results, results_size);
+    outputResultDomains(results, size_res);
 }
 
 void test_task_4() {
-    char *cpdomains = "9001 discuss.codeforces.com";
-    domain d;
-    d.visits_number = 9001;
-    domain r[1] = {d};
-    d.name = "discuss.codeforces.com";
-    task_4(r, 1);
+    size_t size = 4;
+    domain array[4] = {{900, "google.mail.com"},
+                       {50,  "yahoo.com"},
+                       {1,   "intel.mail.com"},
+                       {5,   "wiki.org"}};
+
+    fourthTask(array, size);
 }*/
+
+
 
 void fill_matrix(matrix m, matrix *new_matrix, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
@@ -480,101 +482,110 @@ void test_task_10(int argc, char **argv) {
     task_10(file_name, n);
 }
 
-/*int searchMaxIdx(const int array[], int start, int end) {
-    if (start > end) {
-        return end + 1;
-    } else {
-        int max_num_idx = start;
-        for (int ind = start + 1; ind <= end; ind++) {
-            if (array[ind] > array[max_num_idx])
-                max_num_idx = ind;
-        }
+int get_max_element_index(int *nums, int begin_index, int end_index) {
+    int max_number = nums[begin_index];
+    int max_number_index = begin_index;
 
-        return max_num_idx;
-    }
-}
-
-root_node *create_root_node(int number) {
-    root_node *result = (root_node *) malloc(sizeof(root_node));
-    result->max_value = number;
-    result->left_prefix = NULL;
-    result->right_prefix = NULL;
-
-    return result;
-}
-
-root_node *insert(root_node *node, int number, bool is_left) {
-    root_node *result = create_root_node(number);
-    if (is_left) {
-        node->left_prefix = result;
-    } else {
-        node->right_prefix = result;
-    }
-
-    return result;
-}
-
-
-void create_root_nodes(root_node *node, int *nums, int start, int end, bool is_left) {
-    /*int max_number = nums[0];
-    int index = 0;
-
-    for (int i = 1; i <= end; i++) {
+    for (int i = begin_index + 1; i <= end_index; i++) {
         if (nums[i] > max_number) {
             max_number = nums[i];
-            index = i;
+            max_number_index = i;
         }
-    }*/
-
-    /*int max_number_index = searchMaxIdx(nums, start, end);
-
-    if (max_number_index == end + 1) {
-        if (is_left) {
-            node->left_prefix = NULL;
-        } else {
-            node->right_prefix = NULL;
-        }
-
-        printf("null ");
-        return;
     }
 
-    printf("%d ", nums[max_number_index]);
-    root_node *new_node = insert(node, nums[max_number_index], is_left);
-    create_root_nodes(new_node, nums, start, max_number_index - 1, true);
-    create_root_nodes(new_node, nums, max_number_index + 1, end, false);
+    return max_number_index;
+}
+
+void get_new_node(int *nums, int size, prefix pref) {
+    int max_element_index = get_max_element_index(nums, pref.begin_index, pref.end_index);
+    printf("%d, ", nums[max_element_index]);
+
+    if (pref.size > 1) {
+        prefix left_prefix;
+        left_prefix.size = max_element_index - pref.begin_index;
+        if (left_prefix.size > 0) {
+            left_prefix.begin_index = pref.begin_index;
+            left_prefix.end_index = pref.begin_index + left_prefix.size - 1;
+        }
+
+        prefix right_prefix;
+        right_prefix.size = pref.end_index - max_element_index;
+        if (right_prefix.size > 0) {
+            right_prefix.end_index = pref.end_index;
+            right_prefix.begin_index = right_prefix.end_index - right_prefix.size + 1;
+        }
+
+        if (left_prefix.size > 0 && right_prefix.size > 0) {
+            get_new_node(nums, size, left_prefix);
+            get_new_node(nums, size, right_prefix);
+        } else if (right_prefix.size > 0) {
+            printf("null, ");
+            get_new_node(nums, size, right_prefix);
+        } else {
+            get_new_node(nums, size, left_prefix);
+            printf("null, ");
+        }
+    }
 }
 
 void task_7(int *nums, int size) {
     if (size == 0) {
+        printf("{}\n");
         return;
     }
 
-    /*int max_number = nums[0];
-    int index = 0;
+    printf("{");
 
-    for (int i = 1; i < size; i++) {
-        if (nums[i] > max_number) {
-            max_number = nums[i];
-            index = i;
+    int max_element_index = get_max_element_index(nums, 0, size - 1);
+    printf("%d, ", nums[max_element_index]);
+
+    if (size > 1) {
+        prefix left_prefix;
+        left_prefix.size = max_element_index;
+        if (left_prefix.size > 0) {
+            left_prefix.begin_index = 0;
+            left_prefix.end_index = max_element_index - 1;
         }
-    }*/
 
-    /*int max_number_index = searchMaxIdx(nums, 0, size - 1);
+        prefix right_prefix;
+        right_prefix.size = size - max_element_index - 1;
+        if (right_prefix.size > 0) {
+            right_prefix.begin_index = max_element_index + 1;
+            right_prefix.end_index = size - 1;
+        }
 
-    root_node *new_node = create_root_node(nums[max_number_index]);
-    printf("%d ", nums[max_number_index]);
-
-    create_root_nodes(new_node, nums, 0, max_number_index - 1, true);
-    create_root_nodes(new_node, nums, max_number_index + 1, size - 1, false);
-
-    printf("\n");
+        if (left_prefix.size > 0 && right_prefix.size > 0) {
+            get_new_node(nums, size, left_prefix);
+            get_new_node(nums, size, right_prefix);
+        } else if (right_prefix.size > 0) {
+            printf("null, ");
+            get_new_node(nums, size, right_prefix);
+        } else {
+            get_new_node(nums, size, left_prefix);
+            printf("null, ");
+        }
+    }
+    printf("\b\b}\n");
 }
 
 void test_task_7() {
-    int nums[6] = {3, 2, 1, 6, 0, 5};
-    task_7(nums, 6);
-}*/
+    int nums_1[6] = {3, 2, 1, 6, 0, 5};
+    int size_1 = 6;
+    task_7(nums_1, size_1);
+
+    int nums_2[3] = {3, 2, 1};
+    int size_2 = 3;
+    task_7(nums_2, size_2);
+
+    int nums_3[5] = {5, 3, 2, 4, 1};
+    int size_3 = 5;
+    task_7(nums_3, size_3);
+
+    int nums_4[5] = {2, 3, 1, 4, 5};
+    int size_4 = 5;
+    task_7(nums_4, size_4);
+}
+
 
 void test_lab20() {
     //test_task_1();
@@ -584,5 +595,5 @@ void test_lab20() {
     //test_task_5();
     //test_task_6();
     //test_task_8();
-    //test_task_7();
+    test_task_7();
 }
