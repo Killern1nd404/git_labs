@@ -565,14 +565,74 @@ void test_task_7() {
     task_7(nums_4, size_4);
 }
 
+bool is_prefix(char *string, char *prefix) {
+    bool result = true;
+    char buffer_string = *string;
+    char buffer_prefix = *prefix;
+
+    while ((*string != '\0' || *prefix != '\0') && result) {
+        if (*prefix == '\0') {
+            return result;
+        } else if (*string == '\0') {
+            result = false;
+        } else {
+            if (*prefix != *string) {
+                result = false;
+            }
+            prefix++;
+            string++;
+        }
+    }
+
+    return result;
+}
+
+void task_11() {
+    int n, q;
+    scanf("%d %d", &n, &q);
+    char dictionary[n][MAX_STRING_SIZE];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%s", dictionary[i]);
+    }
+
+    for (int i = 0; i < q; i++) {
+        int k;
+        char p[MAX_STRING_SIZE];
+        scanf("%d %s", &k, p);
+
+        int index = 1;
+        bool is_word_founded = false;
+
+        for (int j = 0; j < n && !is_word_founded; j++) {
+            if (is_prefix(dictionary[j], p)) {
+                if (index == k) {
+                    printf("%d\n", j + 1);
+                    is_word_founded = true;
+                } else {
+                    index++;
+                }
+            }
+        }
+
+        if (!is_word_founded) {
+            printf("-1\n");
+        }
+    }
+}
+
+void test_task_11() {
+    task_11();
+}
 
 void test_lab20() {
     //test_task_1();
     //test_task_2();
     //test_task_3();
-    test_task_4();
+    //test_task_4();
     //test_task_5();
     //test_task_6();
     //test_task_8();
     //test_task_7();
+    test_task_11();
 }

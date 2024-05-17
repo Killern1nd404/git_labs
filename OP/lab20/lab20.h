@@ -69,6 +69,10 @@ void task_7(int *nums, int size);
 
 void test_task_7();
 
+void task_11();
+
+void test_task_11();
+
 void test_lab20();
 
 #endif //UNTITLED_LAB20_H
